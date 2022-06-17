@@ -42,7 +42,7 @@ def move():
     if index_a == 0 :
         index_a = 1
         return moves[random.randrange(len(directions))]
-    elif index_a ==1 :
+    elif index_a == 1 :
         index_a = 0    
         return attack
         
