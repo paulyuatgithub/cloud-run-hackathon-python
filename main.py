@@ -23,6 +23,13 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 moves = ['F', 'T', 'L', 'R']
+directions = ['F', 'L', 'R']
+direction_F = 'F'
+direction_L = 'L'
+direction_R = 'R'
+attack = 'T'
+
+index_a = 0
 
 @app.route("/", methods=['GET'])
 def index():
@@ -32,7 +39,13 @@ def index():
 def move():
     request.get_data()
     logger.info(request.json)
-    return moves[random.randrange(len(moves))]
+    if index_a == 0 :
+        index_a = 1
+        return moves[random.randrange(len(directions))]
+    elif index_a ==1 :
+        index_a = 0    
+        return attack
+        
 
 if __name__ == "__main__":
   app.run(debug=False,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))
